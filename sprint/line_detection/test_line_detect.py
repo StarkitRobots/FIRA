@@ -72,12 +72,13 @@ def mean_lines(splited_coef):
         res.append((np.mean(tmp1), np.mean(tmp2)))
     return res
 
-img = cv2.imread('test/'+filename)
-gray = cv2.imread('test/'+filename, 0)
+def get_lines(filename):
+    img = cv2.imread(filename)
+    gray = cv2.imread(filename, 0)
 
-new = cv2.Canny(gray, 250, 270)
-lines = cv2.HoughLinesP(new, rho, theta, threshold)
-
+    new = cv2.Canny(gray, 250, 270)
+    lines = cv2.HoughLinesP(new, rho, theta, threshold)
+    return lines
 
 coef = []
 for j in range(lines.shape[0]):
